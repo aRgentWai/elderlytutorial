@@ -38,7 +38,7 @@ fun SetupVideoPlayer() {
     VideoPlayer(
         mediaItems = listOf(
             VideoPlayerMediaItem.RawResourceMediaItem(
-                resourceId = R.raw.sending_message_v1,
+                resourceId = R.raw.sending_message_v1_1080p,
             ),
 //            VideoPlayerMediaItem.AssetFileMediaItem(
 //                assetPath = "videos/test.mp4"
