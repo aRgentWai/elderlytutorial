@@ -13,26 +13,10 @@ import androidx.navigation.compose.rememberNavController
 import com.hkbu.elderlytutorial.ui.theme.ElderlyTutorialTheme
 
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ElderlyTutorialApp()
-        }
-    }
-}
-
-@Composable
-fun ElderlyTutorialApp() {
-    ElderlyTutorialTheme {
-
-        val navController = rememberNavController()
-
-        Scaffold { innerPadding ->
-            NavHost(
-                navController = navController,
-                modifier = Modifier.padding(innerPadding)
-            )
         }
     }
 }

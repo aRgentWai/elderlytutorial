@@ -1,5 +1,6 @@
 package com.hkbu.elderlytutorial
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -24,23 +25,57 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.hkbu.elderlytutorial.ui.ElderlyViewModel
+import com.hkbu.elderlytutorial.ui.theme.ElderlyTutorialTheme
+
+enum class ElderlyScreen(@StringRes val title: Int) {
+    Start(title = R.string.app_name),
+    Whatsapp(title = R.string.whatsapp),
+    Video(title = R.string.title_activity_video_screen)
+}
 
 @Composable
 fun OverviewScreen(navController: NavHostController) {
     HomeScreen(navController)
+}
+
+@Composable
+fun ElderlyTutorialApp(
+//    viewModel: ElderlyViewModel = viewModel(),
+    navController: NavHostController = rememberNavController()
+) {
+    // Get current back stack entry
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    // Get the name of the current screen
+//    val currentScreen = ElderlyScreen.Start
+
+    ElderlyTutorialTheme {
+
+        Scaffold { innerPadding ->
+            NavHost(
+                navController = navController,
+                modifier = Modifier.padding(innerPadding)
+            )
+        }
+    }
 }
 
 @Composable
@@ -64,7 +99,7 @@ fun TabButton(navController: NavController) {
                     .weight(1f),
                 shape = RoundedCornerShape(4.dp),
             ) {
-                Text(text = "留言區")
+                Text(text = stringResource(R.string.comments))
             }
             Button(
                 onClick = { navController.navigate("Whatsapp") },
@@ -74,7 +109,7 @@ fun TabButton(navController: NavController) {
                     .weight(1f),
                 shape = RoundedCornerShape(4.dp),
             ) {
-                Text(text = "AI對話")
+                Text(text = stringResource(R.string.aiMessaging))
             }
         }
 
@@ -93,12 +128,12 @@ fun Title() {
         ) {
             Column {
                 Text(
-                    text = "歡迎光臨",
+                    text = stringResource(R.string.welcome),
                     color = Color(0xFF999999),
                     modifier = Modifier.padding(16.dp, 0.dp)
                 )
                 Text(
-                    text = "應用程式學習中心",
+                    text = stringResource(R.string.application_learning_centre),
                     style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
                     modifier = Modifier.padding(16.dp, 0.dp)
                 )
@@ -143,7 +178,13 @@ fun GridView() {
 //        Icons.Default.Phone,
     )
 
-    val strings = listOf("Whatsapp", "日曆", "時鐘鬧鐘", "通訊錄", "WIFI設定", "應用程式")
+    val strings = listOf(stringResource(R.string.whatsapp),
+        stringResource(R.string.calendar),
+        stringResource(R.string.time_alarm),
+        stringResource(R.string.contact),
+        stringResource(R.string.wifi_setting),
+        stringResource(R.string.application)
+    )
 
     Box(
         contentAlignment = Alignment.BottomEnd,
@@ -178,7 +219,7 @@ fun FabButton(
         ) {
             Icon(
                 imageVector = Icons.Default.Phone,
-                contentDescription = "Favorite",
+                contentDescription = stringResource(R.string.favorite),
                 tint = Color.White,
             )
         }

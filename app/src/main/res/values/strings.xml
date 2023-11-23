@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">elderly tutorial</string>
-    <string name="title_activity_whatsap">Whatsap</string>
     <string name="title_activity_overview_screen">OverviewScreen</string>
-    <string name="title_activity_video_screen">VIdeoScreen</string>
+    <string name="title_activity_video_screen">VideoScreen</string>
+    <string name="comments">留言區</string>
+    <string name="aiMessaging">AI對話</string>
+    <string name="welcome">歡迎光臨</string>
+    <string name="application_learning_centre">應用程式學習中心</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="calendar">日曆</string>
+    <string name="time_alarm">時鐘鬧鐘</string>
+    <string name="contact">通訊錄</string>
+    <string name="wifi_setting">WIFI設定</string>
+    <string name="application">應用程式</string>
+    <string name="favorite">Favorite</string>
+    <string name="setup_name_and_icon">設定名字和頭像</string>
+    <string name="send_message">發放訊息</string>
+    <string name="create_and_quit_group">建立和退出群組</string>
+    <string name="story_and_whatsapp_dialing">動態和Whatsapp通話</string>
 </resources>

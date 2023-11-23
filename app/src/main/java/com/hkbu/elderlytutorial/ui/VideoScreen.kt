@@ -1,4 +1,4 @@
-package com.hkbu.elderlytutorial
+package com.hkbu.elderlytutorial.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.media3.exoplayer.analytics.AnalyticsListener
+import com.hkbu.elderlytutorial.R
 import com.hkbu.elderlytutorial.ui.theme.ElderlyTutorialTheme
 import io.sanghun.compose.video.RepeatMode
 import io.sanghun.compose.video.VideoPlayer

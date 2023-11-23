@@ -1,4 +1,4 @@
-package com.hkbu.elderlytutorial
+package com.hkbu.elderlytutorial.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -17,8 +17,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.hkbu.elderlytutorial.R
 import com.hkbu.elderlytutorial.ui.theme.ElderlyTutorialTheme
 
 class WhatsappScreen : ComponentActivity() {
@@ -65,18 +66,18 @@ fun VideoButton() {
         Button(
             onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "設定名字和頭像")
+            Text(text = stringResource(R.string.setup_name_and_icon))
         }
         Button(
             onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "發放訊息")
+            Text(text = stringResource(R.string.send_message))
         }
         Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
-            Text(text = "建立和退出群組")
+            Text(text = stringResource(R.string.create_and_quit_group))
         }
         Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
-            Text(text = "動態和Whatsapp通話")
+            Text(text = stringResource(R.string.story_and_whatsapp_dialing))
         }
     }
 }
