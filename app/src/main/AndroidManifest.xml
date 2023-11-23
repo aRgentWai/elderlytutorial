@@ -13,19 +13,19 @@
         android:theme="@style/Theme.ElderlyTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".VIdeoScreen"
+            android:name=".ui.VideoScreen"
             android:exported="false"
             android:label="@string/title_activity_video_screen"
             android:theme="@style/Theme.ElderlyTutorial" />
+<!--        <activity-->
+<!--            android:name=".OverviewScreen"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_overview_screen"-->
+<!--            android:theme="@style/Theme.ElderlyTutorial" />-->
         <activity
-            android:name=".OverviewScreen"
+            android:name=".ui.WhatsappScreen"
             android:exported="false"
-            android:label="@string/title_activity_overview_screen"
-            android:theme="@style/Theme.ElderlyTutorial" />
-        <activity
-            android:name=".Whatsap"
-            android:exported="false"
-            android:label="@string/title_activity_whatsap"
+            android:label="@string/whatsapp"
             android:theme="@style/Theme.ElderlyTutorial" />
         <activity
             android:name=".MainActivity"

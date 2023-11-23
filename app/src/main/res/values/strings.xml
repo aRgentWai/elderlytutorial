@@ -17,4 +17,5 @@
     <string name="send_message">發放訊息</string>
     <string name="create_and_quit_group">建立和退出群組</string>
     <string name="story_and_whatsapp_dialing">動態和Whatsapp通話</string>
+    <string name="back_button">返回</string>
 </resources>
