@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import com.hkbu.elderlytutorial.R
 
 enum class ElderlyScreen(@StringRes val title: Int) {
-    Start(title = R.string.app_name),
+    Home(title = R.string.app_name),
     Whatsapp(title = R.string.whatsapp),
     Video(title = R.string.title_activity_video_screen)
 }
@@ -37,9 +37,4 @@ fun WhatsappAppBar(
 //            }
 //        }
 //    )
-}
-
-@Composable
-fun ScrollContent(innerPadding: PaddingValues) {
-    TODO("Not yet implemented")
 }

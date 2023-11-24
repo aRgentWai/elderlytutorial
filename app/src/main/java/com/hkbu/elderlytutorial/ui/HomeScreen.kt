@@ -18,17 +18,20 @@ package com.hkbu.elderlytutorial.ui
 import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -46,8 +49,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -115,6 +121,10 @@ fun TabButton() {
                     .fillMaxWidth()
                     .weight(1f),
                 shape = RoundedCornerShape(4.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(id = R.color.blue),
+                    contentColor = Color.White,
+                ), contentPadding = PaddingValues(0.dp)
             ) {
                 Text(text = stringResource(R.string.comments))
             }
@@ -127,6 +137,10 @@ fun TabButton() {
                     .fillMaxWidth()
                     .weight(1f),
                 shape = RoundedCornerShape(4.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(id = R.color.blue),
+                    contentColor = Color.White,
+                ), contentPadding = PaddingValues(0.dp)
             ) {
                 Text(text = stringResource(R.string.aiMessaging))
             }
@@ -138,10 +152,12 @@ fun TabButton() {
 // GridView button
 @Composable
 fun Title() {
-    Row {
+    Row(
+        modifier = Modifier.fillMaxWidth()
+    ) {
         Box(
             modifier = Modifier
-                .fillMaxWidth()
+                .size(300.dp, 90.dp)
                 .padding(top = 16.dp, start = 16.dp, end = 16.dp),
             contentAlignment = Alignment.TopStart
         ) {
@@ -160,25 +176,29 @@ fun Title() {
         }
         Box(
             modifier = Modifier
-                .padding(top = 16.dp, start = 16.dp, end = 16.dp),
-            contentAlignment = Alignment.TopEnd
+                .size(90.dp)
+                .padding(end = 8.dp),
+            contentAlignment = Alignment.CenterEnd,
         ) {
             ImageButton(
                 onClick = {
                     //TODO
                 },
-                modifier = Modifier.size(60.dp),
+                modifier = Modifier
+                    .size(60.dp)
+                    .clip(shape = RectangleShape)
+                    .border(
+                        // to be transparent
+                        BorderStroke(2.dp, Color(0xFF999999)),
+                        RoundedCornerShape(10.dp)
+                    ),
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.baseline_qr_code_scanner_24),
                     contentDescription = null,
                     modifier = Modifier
                         .fillMaxSize()
-                        .border(
-                            // to be transparent
-                            BorderStroke(0.dp, Color(0xFF999999)),
-                            RoundedCornerShape(4.dp)
-                        )
+                        .padding(5.dp)
                 )
             }
         }
@@ -222,7 +242,7 @@ fun FabButton(
 //                onClick()
             },
             shape = CircleShape,
-            containerColor = Color(0xFF3D3F41),
+            containerColor = colorResource(id = R.color.blue),
         ) {
             Icon(
                 imageVector = Icons.Default.Phone,

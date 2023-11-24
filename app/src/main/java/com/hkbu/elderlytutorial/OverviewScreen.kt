@@ -39,18 +39,24 @@ fun ElderlyTutorialApp(
 
             NavHost(
                 navController = navController,
-                startDestination = ElderlyScreen.Whatsapp.name,
+                startDestination = ElderlyScreen.Home.name,
                 modifier = Modifier.padding(innerPadding),
             ) {
-                composable(route = ElderlyScreen.Start.name) {
+                composable(route = ElderlyScreen.Home.name) {
                     HomeScreen(
                         gridOptions = DataSource.gridOptions,
-                        onGridItemClick = { navController.navigate(ElderlyScreen.Whatsapp.name) },
+                        onGridItemClick = {
+                            // TODO change to position
+                            navController.navigate(ElderlyScreen.Whatsapp.name)
+                        },
                     )
                 }
                 composable(route = ElderlyScreen.Whatsapp.name) {
                     WhatsappScreen(
                         options = DataSource.WhatsappItems.values().map { it.title },
+                        onWhatsappItemClicked = {
+                            navController.navigate(ElderlyScreen.Video.name)
+                        },
                         modifier = Modifier
                     )
 

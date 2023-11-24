@@ -13,22 +13,8 @@
         android:theme="@style/Theme.ElderlyTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".ui.VideoScreen"
-            android:exported="false"
-            android:label="@string/title_activity_video_screen"
-            android:theme="@style/Theme.ElderlyTutorial" />
-<!--        <activity-->
-<!--            android:name=".OverviewScreen"-->
-<!--            android:exported="false"-->
-<!--            android:label="@string/title_activity_overview_screen"-->
-<!--            android:theme="@style/Theme.ElderlyTutorial" />-->
-        <activity
-            android:name=".ui.WhatsappScreen"
-            android:exported="false"
-            android:label="@string/whatsapp"
-            android:theme="@style/Theme.ElderlyTutorial" />
-        <activity
             android:name=".MainActivity"
+            android:supportsPictureInPicture="true"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ElderlyTutorial">

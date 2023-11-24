@@ -17,6 +17,7 @@ package com.hkbu.elderlytutorial.ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,11 +30,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,23 +56,48 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.hkbu.elderlytutorial.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WhatsappScreen(
     options: List<Int>,
-//    onWhatsappItemClicked: (String) -> Unit = {},
+    onWhatsappItemClicked: (Int) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     var selectedValue by rememberSaveable { mutableStateOf("") }
 
     // TODO TopAppBar
 
+    TopAppBar(
+        title = { Text(text = "Whatsapp") },
+        navigationIcon = {
+            IconButton(onClick = { /* Handle navigation icon click */ }) {
+                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+            }
+        },
+        actions = {
+            IconButton(onClick = { /* Handle action 2 click */ }) {
+                Icon(painterResource(
+                    id = R.drawable.baseline_qr_code_scanner_24),
+                    contentDescription = "More",
+                    modifier.size(100.dp).padding(8.dp )
+
+                )
+            }
+        }
+    )
+
     Column(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 100.dp),
 //        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -71,18 +106,26 @@ fun WhatsappScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(16.dp, 8.dp)
                     .border(
-                        BorderStroke(4.dp, Color(0xFF444444)),
-                        RoundedCornerShape(4.dp)
+                        BorderStroke(2.dp, Color(0xFF444444)),
+                        RoundedCornerShape(16.dp)
                     ),
             ) {
-                Text(
-                    text = LocalContext.current.resources.getString(item),
-                    modifier = Modifier
-                        .padding(0.dp, 8.dp)
-                        .fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
+                TextButton(
+                    onClick = { onWhatsappItemClicked(item) },
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(
+                        text = LocalContext.current.resources.getString(item),
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
+                    )
+                }
+
+
             }
 
         }
