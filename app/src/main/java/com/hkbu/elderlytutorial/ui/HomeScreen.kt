@@ -67,8 +67,8 @@ import com.hkbu.elderlytutorial.R
 
 @Composable
 fun HomeScreen(
-    gridOptions: List<Pair<Int, Int>>,
-    onGridItemClick: (Int) -> Unit,
+    gridOptions: List<DataSource.GridOption>,
+    onGridItemClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -178,7 +178,7 @@ fun Title() {
             modifier = Modifier
                 .size(90.dp)
                 .padding(end = 8.dp),
-            contentAlignment = Alignment.CenterEnd,
+            contentAlignment = Alignment.Center,
         ) {
             ImageButton(
                 onClick = {
@@ -207,8 +207,8 @@ fun Title() {
 
 @Composable
 fun GridView(
-    listOfItems: List<Pair<Int, Int>>,
-    onItemClicked: (Int) -> Unit,
+    listOfItems: List<DataSource.GridOption>,
+    onItemClicked: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -219,9 +219,9 @@ fun GridView(
             LazyVerticalGrid(columns = GridCells.Fixed(2)) {
                 items(listOfItems) { item ->
                     GridItem(
-                        imageRes = item.first,
-                        textRes = item.second,
-                        onClick = { onItemClicked(item.second) }
+                        imageRes = item.image,
+                        textRes = item.title,
+                        onClick = { onItemClicked(item.name) }
                     )
                 }
             }
@@ -267,7 +267,7 @@ fun GridItem(imageRes: Int, textRes: Int, onClick: () -> Unit) {
             )
         )
         ImageButton(
-            onClick = onClick,
+            onClick = { onClick() },
             modifier = Modifier.size(120.dp)
         ) {
             Image(

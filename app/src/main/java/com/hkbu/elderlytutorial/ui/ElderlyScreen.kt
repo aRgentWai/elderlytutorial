@@ -8,33 +8,11 @@ import com.hkbu.elderlytutorial.R
 
 enum class ElderlyScreen(@StringRes val title: Int) {
     Home(title = R.string.app_name),
-    Whatsapp(title = R.string.whatsapp),
-    Video(title = R.string.title_activity_video_screen)
-}
-
-@Composable
-fun WhatsappAppBar(
-    currentScreen: ElderlyScreen,
-    canNavigateBack: Boolean,
-    navigateUp: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-
-//    TopAppBar(
-//        title = { Text(stringResource(currentScreen.title)) },
-//        colors = TopAppBarDefaults.mediumTopAppBarColors(
-//            containerColor = MaterialTheme.colorScheme.primaryContainer
-//        ),
-//        modifier = modifier,
-//        navigationIcon = {
-//            if (canNavigateBack) {
-//                IconButton(onClick = navigateUp) {
-//                    Icon(
-//                        imageVector = Icons.Filled.ArrowBack,
-//                        contentDescription = stringResource(R.string.back_button)
-//                    )
-//                }
-//            }
-//        }
-//    )
+    Whatsapp(title = R.string.whatsapp_title),
+    Video(title = R.string.title_activity_video_screen),
+    Calendar(title = R.string.calendar_title),
+    Alarm(title = R.string.alarm_title),
+    Contact(title = R.string.contact_title),
+    WIFI(title = R.string.wifi_title),
+    Application(title = R.string.application_title),
 }

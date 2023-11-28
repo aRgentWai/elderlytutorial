@@ -7,6 +7,12 @@
     <string name="welcome">歡迎光臨</string>
     <string name="application_learning_centre">應用程式學習中心</string>
     <string name="whatsapp">Whatsapp</string>
+    <string name="whatsapp_title">Whatsapp</string>
+    <string name="calendar_title">Calendar</string>
+    <string name="alarm_title">Alarm</string>
+    <string name="contact_title">Contact</string>
+    <string name="wifi_title">Wifi</string>
+    <string name="application_title">Application</string>
     <string name="calendar">日曆</string>
     <string name="time_alarm">時鐘鬧鐘</string>
     <string name="contact">通訊錄</string>

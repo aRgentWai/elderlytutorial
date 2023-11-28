@@ -20,6 +20,7 @@ import com.hkbu.elderlytutorial.ui.HomeScreen
 import com.hkbu.elderlytutorial.ui.VideoScreen
 import com.hkbu.elderlytutorial.ui.WhatsappScreen
 import com.hkbu.elderlytutorial.ui.theme.ElderlyTutorialTheme
+import io.sanghun.compose.video.uri.VideoPlayerMediaItem
 
 @Composable
 fun ElderlyTutorialApp(
@@ -29,7 +30,7 @@ fun ElderlyTutorialApp(
     // Get current back stack entry
     val backStackEntry by navController.currentBackStackEntryAsState()
     // Get the name of the current screen
-//    val currentScreen = ElderlyScreen.Start
+    //  val currentScreen = ElderlyScreen.Home
 
     ElderlyTutorialTheme {
 
@@ -46,8 +47,8 @@ fun ElderlyTutorialApp(
                     HomeScreen(
                         gridOptions = DataSource.gridOptions,
                         onGridItemClick = {
-                            // TODO change to position
-                            navController.navigate(ElderlyScreen.Whatsapp.name)
+                            // TODO
+                            navController.navigate(it)
                         },
                     )
                 }
@@ -57,15 +58,27 @@ fun ElderlyTutorialApp(
                         onWhatsappItemClicked = {
                             navController.navigate(ElderlyScreen.Video.name)
                         },
+                        navigateUp = {
+                            navController.navigateUp()
+                        },
                         modifier = Modifier
                     )
 
                 }
-                composable(route = ElderlyScreen.Video.name) {
-                    VideoScreen(
-//                        videoItem = DataSource.,
-                    )
+                composable(route = ElderlyScreen.Calendar.name) {
                 }
+                composable(route = ElderlyScreen.Alarm.name) {
+                }
+                composable(route = ElderlyScreen.Contact.name) {
+                }
+                composable(route = ElderlyScreen.WIFI.name) {
+                }
+                composable(route = ElderlyScreen.Application.name) {
+                }
+                composable(route = ElderlyScreen.Video.name) {
+                    VideoScreen()
+                }
+
             }
         }
     }

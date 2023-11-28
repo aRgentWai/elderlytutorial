@@ -69,6 +69,7 @@ import com.hkbu.elderlytutorial.R
 fun WhatsappScreen(
     options: List<Int>,
     onWhatsappItemClicked: (Int) -> Unit = {},
+    navigateUp: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     var selectedValue by rememberSaveable { mutableStateOf("") }
@@ -78,7 +79,7 @@ fun WhatsappScreen(
     TopAppBar(
         title = { Text(text = "Whatsapp") },
         navigationIcon = {
-            IconButton(onClick = { /* Handle navigation icon click */ }) {
+            IconButton(onClick = navigateUp) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Back")
             }
         },
@@ -93,7 +94,7 @@ fun WhatsappScreen(
             }
         }
     )
-
+ 
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -134,27 +135,27 @@ fun WhatsappScreen(
 
 }
 
-@Composable
-fun VideoButton() {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Button(
-            onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(text = stringResource(R.string.setup_name_and_icon))
-        }
-        Button(
-            onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(text = stringResource(R.string.send_message))
-        }
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
-            Text(text = stringResource(R.string.create_and_quit_group))
-        }
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
-            Text(text = stringResource(R.string.story_and_whatsapp_dialing))
-        }
-    }
-}
+//@Composable
+//fun VideoButton() {
+//    Column(modifier = Modifier.fillMaxWidth()) {
+//        Button(
+//            onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()
+//        ) {
+//            Text(text = stringResource(R.string.setup_name_and_icon))
+//        }
+//        Button(
+//            onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()
+//        ) {
+//            Text(text = stringResource(R.string.send_message))
+//        }
+//        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+//            Text(text = stringResource(R.string.create_and_quit_group))
+//        }
+//        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+//            Text(text = stringResource(R.string.story_and_whatsapp_dialing))
+//        }
+//    }
+//}
 
 @Preview
 @Composable
