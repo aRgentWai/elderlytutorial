@@ -1,5 +1,6 @@
 package com.hkbu.elderlytutorial.ui
 
+import android.content.pm.ActivityInfo
 import android.util.Log
 
 import androidx.annotation.RawRes
@@ -74,6 +75,8 @@ fun SetupVideoPlayer() {
 //        )
 //    }
 
+//    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+
     VideoPlayer(
         mediaItems = listOf(
             VideoPlayerMediaItem.RawResourceMediaItem(
@@ -128,6 +131,7 @@ fun SetupVideoPlayer() {
             .fillMaxSize()
     )
 }
+
 
 @Preview
 @Composable
