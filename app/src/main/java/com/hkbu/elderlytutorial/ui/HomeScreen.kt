@@ -62,13 +62,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.hkbu.elderlytutorial.R
 
 @Composable
 fun HomeScreen(
     gridOptions: List<DataSource.GridOption>,
     onGridItemClick: (String) -> Unit,
+    navController: NavController = rememberNavController(),
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -76,33 +79,15 @@ fun HomeScreen(
     ) {
         Column {
             Title()
-            TabButton()
+            TabButton(navController)
             GridView(gridOptions, onGridItemClick, modifier = modifier)
         }
         FabButton()
     }
 }
 
-/**
- * Customizable button composable that displays the [labelResourceId]
- * and triggers [onClick] lambda when this composable is clicked
- */
 @Composable
-fun SelectQuantityButton(
-    @StringRes labelResourceId: Int,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Button(
-        onClick = onClick,
-        modifier = modifier.widthIn(min = 250.dp)
-    ) {
-        Text(stringResource(labelResourceId))
-    }
-}
-
-@Composable
-fun TabButton() {
+fun TabButton(navController: NavController) {
     Column(
         modifier = Modifier
             .padding(top = 16.dp, start = 16.dp, end = 16.dp),
@@ -115,7 +100,9 @@ fun TabButton() {
             verticalAlignment = Alignment.Top
         ) {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate("Forum")
+                },
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth()

@@ -19,9 +19,39 @@
     <string name="wifi_setting">WIFI設定</string>
     <string name="application">應用程式</string>
     <string name="favorite">Favorite</string>
-    <string name="setup_name_and_icon">設定名字和頭像</string>
+
     <string name="send_message">發放訊息</string>
     <string name="create_and_quit_group">建立和退出群組</string>
     <string name="story_and_whatsapp_dialing">動態和Whatsapp通話</string>
     <string name="back_button">返回</string>
+
+    <string name="setup_wifi_connection">設定Wi-Fi連線</string>
+    <string name="turn_on_and_off_wifi">開啟和關閉Wi-Fi</string>
+
+    <string name="new_contact">新增聯絡人</string>
+    <string name="modify_and_delete_contact">修改和剷除聯絡人</string>
+
+    <string name="new_alarm">新增鬧鐘</string>
+    <string name="timer_setup">計時器設定</string>
+
+    <string name="new_calendar">新增日曆活動</string>
+    <string name="edit_and_delete_calendar">修改和剷除活動</string>
+
+    <string name="update_and_delete_installation_update">更新及解除安裝Apps-更新</string>
+    <string name="update_and_delete_installation_uninstall">更新及解除安裝Apps-解除</string>
+    <string name="download_applications">下載應用程式</string>
+
+    <string name="new_group">新增群組</string>
+    <string name="new_group_member">新增群組成員</string>
+    <string name="quit_group">退出群組</string>
+
+    <string name="setup_name_and_icon">設定頭像和名字</string>
+    <string name="release_photo">相片發放</string>
+    <string name="send_message_text">訊息發送(文字)</string>
+    <string name="send_message_voice">訊息發送(語音)</string>
+    <string name="voice_dial">語音通話</string>
+
+
+
+
 </resources>

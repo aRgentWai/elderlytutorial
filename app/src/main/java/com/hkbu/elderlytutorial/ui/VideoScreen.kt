@@ -36,16 +36,16 @@ import io.sanghun.compose.video.uri.VideoPlayerMediaItem
 
 @Composable
 fun VideoScreen(
-//    videoItem: Int
+    @RawRes videoItem: Int
 ) {
     // TODO VideoPlayer
-    SetupVideoPlayer()
+    SetupVideoPlayer(videoItem)
 
 }
 
 
 @Composable
-fun SetupVideoPlayer() {
+fun SetupVideoPlayer(@RawRes videoItem: Int) {
 
 //    @Composable
 //    fun VideoLayout(@RawRes rawResource: Int) {
@@ -80,7 +80,7 @@ fun SetupVideoPlayer() {
     VideoPlayer(
         mediaItems = listOf(
             VideoPlayerMediaItem.RawResourceMediaItem(
-                resourceId = R.raw.sending_message_v1_1080p,
+                resourceId = videoItem,
             ),
 //            VideoPlayerMediaItem.AssetFileMediaItem(
 //                assetPath = "videos/test.mp4"
@@ -136,7 +136,7 @@ fun SetupVideoPlayer() {
 @Preview
 @Composable
 fun VideoPreview() {
-    VideoScreen()
+    VideoScreen(R.raw.whatsapp_release_photo)
 }
 
 
