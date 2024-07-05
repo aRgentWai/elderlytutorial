@@ -65,7 +65,7 @@ fun WhatsappScreen(
     // TODO TopAppBar
 
     TopAppBar(
-        title = { Text(text = stringResource(R.string.whatsapp_title)) },
+        title = { Text(text = stringResource(R.string.whatsapp)) },
         navigationIcon = {
             IconButton(onClick = navigateUp) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -126,7 +126,6 @@ fun WhatsappScreen(
     }
 
 }
-
 @Preview
 @Composable
 fun WhatsappPreview() {

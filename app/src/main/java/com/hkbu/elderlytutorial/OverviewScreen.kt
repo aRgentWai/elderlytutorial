@@ -95,7 +95,7 @@ fun ElderlyTutorialApp(
                 }
                 composable(route = ElderlyScreen.Alarm.name) {
                     AlarmScreen(
-                        options = DataSource.WhatsappItems.values().map { it.title },
+                        options = DataSource.AlarmItems.values().map { it.title },
                         onAlarmItemClicked = {
                             navController.navigate("VideoScreen")
                         },
@@ -143,12 +143,10 @@ fun ElderlyTutorialApp(
                     )
                 }
                 composable(route = ElderlyScreen.Video.name) {
-//                    val videoResArg =
-//                        navController.previousBackStackEntry?.arguments?.getInt("videoRes")
-//                    Log.d("videoResArg", videoResArg.toString())
-//                    VideoScreen(backStackEntry.arguments?.getInt("videoRes")!!)
+                    val videoRes = DataSource.WhatsappItems.Dial.resourceId
+
                     VideoScreen(
-                        videoItem = R.raw.whatsapp_release_photo,
+                        videoItem = videoRes,
                     )
                 }
 

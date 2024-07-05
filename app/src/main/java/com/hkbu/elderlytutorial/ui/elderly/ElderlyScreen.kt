@@ -5,7 +5,7 @@ import com.hkbu.elderlytutorial.R
 
 enum class ElderlyScreen(@StringRes val title: Int) {
     Home(title = R.string.app_name),
-    Whatsapp(title = R.string.whatsapp_title),
+    Whatsapp(title = R.string.whatsapp),
     Video(title = R.string.title_activity_video_screen),
     Calendar(title = R.string.calendar_title),
     Alarm(title = R.string.alarm_title),
