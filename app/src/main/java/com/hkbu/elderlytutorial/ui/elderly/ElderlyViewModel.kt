@@ -1,5 +1,6 @@
 package com.hkbu.elderlytutorial.ui.elderly
 
+import androidx.annotation.RawRes
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -8,11 +9,11 @@ import kotlinx.coroutines.flow.update
 
 class ElderlyViewModel : ViewModel() {
 
-    private val _uiState = MutableStateFlow(ElderlyUiState())
-    val uiState: StateFlow<ElderlyUiState> = _uiState.asStateFlow()
+    private val _uiStateFlow = MutableStateFlow(ElderlyUiState())
+    val uiStateFlow: StateFlow<ElderlyUiState> = _uiStateFlow.asStateFlow()
 
-    fun setWhatsappVideoId(whatsappVideoId: String) {
-        _uiState.update { currentState ->
+    fun setWhatsappVideoId(@RawRes whatsappVideoId: Int) {
+        _uiStateFlow.update { currentState ->
             currentState.copy(whatsappVideoId = whatsappVideoId)
 //        _uiState.value = _uiState.value.copy(whatsappVideoId = whatsappVideoId)
         }

@@ -1,10 +1,7 @@
 package com.hkbu.elderlytutorial
 
 
-import android.os.Bundle
-import android.provider.Settings.Global.putString
 import android.util.Log
-import androidx.annotation.RawRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -12,7 +9,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -46,7 +42,7 @@ fun ElderlyTutorialApp(
 
         Scaffold { innerPadding ->
 
-            val uiState by viewModel.uiState.collectAsState()
+            val uiState by viewModel.uiStateFlow.collectAsState()
 
             NavHost(
                 navController = navController,
@@ -66,14 +62,13 @@ fun ElderlyTutorialApp(
                 composable(route = ElderlyScreen.Whatsapp.name) {
 //                    val videoRes = R.raw.whatsapp_new_group
                     WhatsappScreen(
-//                        options = DataSource.WhatsappItems.values().map {
-//                            it.title
-//                        },
                         onWhatsappItemClicked = {
-                            val videoRes = DataSource.WhatsappItems.values().find { item -> item.title == it }?.resourceId
-                            Log.d("videoRes", videoRes.toString())
-                            Log.d("videoRes", DataSource.WhatsappItems.Setup.resourceId.toString())
-                            navController.navigate("VideoScreen/$videoRes")
+                            val videoRes = DataSource.WhatsappItems.values()
+                                .find { item -> item.title == it }?.resourceId
+//                            Log.d("videoRes", videoRes.toString())
+//                            Log.d("videoRes", DataSource.WhatsappItems.Setup.resourceId.toString())
+                            viewModel.setWhatsappVideoId(videoRes!!)
+                            navController.navigate("VideoScreen/{$videoRes}")
                         },
                         navigateUp = {
                             navController.navigateUp()
@@ -83,7 +78,7 @@ fun ElderlyTutorialApp(
                 }
                 composable(route = ElderlyScreen.Calendar.name) {
                     CalendarScreen(
-                        options = DataSource.WhatsappItems.values().map { it.title },
+                        options = DataSource.CalendarItems.values().map { it.title },
                         onCalendarItemClicked = {
                             navController.navigate("VideoScreen")
                         },
@@ -107,7 +102,7 @@ fun ElderlyTutorialApp(
                 }
                 composable(route = ElderlyScreen.Contact.name) {
                     ContactScreen(
-                        options = DataSource.WhatsappItems.values().map { it.title },
+                        options = DataSource.ContactItems.values().map { it.title },
                         onContactItemClicked = {
                             navController.navigate("VideoScreen")
                         },
@@ -142,12 +137,16 @@ fun ElderlyTutorialApp(
                         modifier = Modifier
                     )
                 }
-                composable(route = ElderlyScreen.Video.name) {
-                    val videoRes = DataSource.WhatsappItems.Dial.resourceId
-
+                composable(
+                    route = ElderlyScreen.Video.name
+//                            + "/{videoRes}",
+//                    arguments = listOf(navArgument("videoRes") { type = NavType.IntType })
+                ) {
+//                    val videoRes = DataSource.WhatsappItems.Dial.resourceId
                     VideoScreen(
-                        videoItem = videoRes,
+                        videoItem = uiState.whatsappVideoId,
                     )
+
                 }
 
                 composable(route = ElderlyScreen.Forum.name) {

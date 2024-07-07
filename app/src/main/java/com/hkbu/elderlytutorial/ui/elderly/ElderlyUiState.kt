@@ -1,5 +1,7 @@
 package com.hkbu.elderlytutorial.ui.elderly
 
+import androidx.annotation.RawRes
+
 data class ElderlyUiState(
-    val whatsappVideoId: String = "",
+   @RawRes val whatsappVideoId: Int = 0,
 )

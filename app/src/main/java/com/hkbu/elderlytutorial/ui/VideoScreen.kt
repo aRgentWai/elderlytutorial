@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -20,6 +23,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player.REPEAT_MODE_OFF
 import androidx.media3.datasource.RawResourceDataSource
@@ -27,6 +31,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.analytics.AnalyticsListener
 import androidx.media3.ui.AspectRatioFrameLayout
 import com.hkbu.elderlytutorial.R
+import com.hkbu.elderlytutorial.ui.elderly.ElderlyViewModel
 import com.hkbu.elderlytutorial.ui.theme.ElderlyTutorialTheme
 import io.sanghun.compose.video.RepeatMode
 import io.sanghun.compose.video.VideoPlayer
@@ -39,6 +44,12 @@ fun VideoScreen(
     @RawRes videoItem: Int
 ) {
     // TODO VideoPlayer
+    val viewModel: ElderlyViewModel = viewModel()
+    // Use the ViewModel using collectAsState to safely access the value
+//    val myStateFlow: State<Int> by viewModel.uiStateFlow.collectAsState()
+
+    // Access the value of myStateFlow within the composition
+//    val video = myStateFlow.value
     SetupVideoPlayer(videoItem)
 
 }
