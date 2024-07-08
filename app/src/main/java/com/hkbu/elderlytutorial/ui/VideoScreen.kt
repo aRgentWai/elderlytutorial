@@ -1,6 +1,7 @@
 package com.hkbu.elderlytutorial.ui
 
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.util.Log
 
 import androidx.annotation.RawRes
@@ -18,6 +19,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -87,6 +89,7 @@ fun SetupVideoPlayer(@RawRes videoItem: Int) {
 //    }
 
 //    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+    LocalConfiguration.current.orientation = Configuration.ORIENTATION_PORTRAIT
 
     VideoPlayer(
         mediaItems = listOf(
@@ -142,7 +145,6 @@ fun SetupVideoPlayer(@RawRes videoItem: Int) {
             .fillMaxSize()
     )
 }
-
 
 @Preview
 @Composable
