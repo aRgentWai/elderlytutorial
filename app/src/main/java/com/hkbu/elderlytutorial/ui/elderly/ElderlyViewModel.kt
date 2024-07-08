@@ -12,9 +12,9 @@ class ElderlyViewModel : ViewModel() {
     private val _uiStateFlow = MutableStateFlow(ElderlyUiState())
     val uiStateFlow: StateFlow<ElderlyUiState> = _uiStateFlow.asStateFlow()
 
-    fun setWhatsappVideoId(@RawRes whatsappVideoId: Int) {
+    fun setVideoId(@RawRes videoId: Int) {
         _uiStateFlow.update { currentState ->
-            currentState.copy(whatsappVideoId = whatsappVideoId)
+            currentState.copy(videoId = videoId)
 //        _uiState.value = _uiState.value.copy(whatsappVideoId = whatsappVideoId)
         }
     }

@@ -55,7 +55,7 @@ import com.hkbu.elderlytutorial.ui.DataSource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CalendarScreen(
-    options: List<Int>,
+//    options: List<Int>,
     onCalendarItemClicked: (Int) -> Unit = {},
     navigateUp: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -91,7 +91,7 @@ fun CalendarScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
-        options.forEach { item ->
+        DataSource.CalendarItems.values().forEach { item ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -102,11 +102,11 @@ fun CalendarScreen(
                     ),
             ) {
                 TextButton(
-                    onClick = { onCalendarItemClicked(item) },
+                    onClick = { onCalendarItemClicked(item.title) },
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text(
-                        text = LocalContext.current.resources.getString(item),
+                        text = LocalContext.current.resources.getString(item.title),
                         modifier = Modifier
                             .fillMaxWidth(),
                         textAlign = TextAlign.Center,
@@ -127,7 +127,7 @@ fun CalendarScreen(
 @Composable
 fun CalendarPreview() {
     CalendarScreen(
-        options = DataSource.CalendarItems.values().map { it.title },
+//        options = DataSource.CalendarItems.values().map { it.title },
         // TODO change DataSource
         modifier = Modifier.fillMaxHeight()
     )

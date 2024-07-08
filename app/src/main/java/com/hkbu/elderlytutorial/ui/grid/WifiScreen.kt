@@ -55,7 +55,7 @@ import com.hkbu.elderlytutorial.ui.DataSource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WifiScreen(
-    options: List<Int>,
+//    options: List<Int>,
     onWifiItemClicked: (Int) -> Unit = {},
     navigateUp: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -91,7 +91,7 @@ fun WifiScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
-        options.forEach { item ->
+        DataSource.WifiItems.values().forEach { item ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -102,11 +102,11 @@ fun WifiScreen(
                     ),
             ) {
                 TextButton(
-                    onClick = { onWifiItemClicked(item) },
+                    onClick = { onWifiItemClicked(item.title) },
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text(
-                        text = LocalContext.current.resources.getString(item),
+                        text = LocalContext.current.resources.getString(item.title),
                         modifier = Modifier
                             .fillMaxWidth(),
                         textAlign = TextAlign.Center,
@@ -127,7 +127,7 @@ fun WifiScreen(
 @Composable
 fun WifiPreview() {
     WifiScreen(
-        options = DataSource.WifiItems.values().map { it.title },
+//        options = DataSource.WifiItems.values().map { it.title },
         // TODO change DataSource
         modifier = Modifier.fillMaxHeight()
     )

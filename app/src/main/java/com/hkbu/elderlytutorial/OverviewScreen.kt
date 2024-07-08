@@ -1,7 +1,6 @@
 package com.hkbu.elderlytutorial
 
 
-import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -43,6 +42,7 @@ fun ElderlyTutorialApp(
         Scaffold { innerPadding ->
 
             val uiState by viewModel.uiStateFlow.collectAsState()
+            var videoResId = R.raw.mobile_05_new_alarm_v1
 
             NavHost(
                 navController = navController,
@@ -60,15 +60,12 @@ fun ElderlyTutorialApp(
                     )
                 }
                 composable(route = ElderlyScreen.Whatsapp.name) {
-//                    val videoRes = R.raw.whatsapp_new_group
                     WhatsappScreen(
                         onWhatsappItemClicked = {
-                            val videoRes = DataSource.WhatsappItems.values()
-                                .find { item -> item.title == it }?.resourceId
-//                            Log.d("videoRes", videoRes.toString())
-//                            Log.d("videoRes", DataSource.WhatsappItems.Setup.resourceId.toString())
-                            viewModel.setWhatsappVideoId(videoRes!!)
-                            navController.navigate("VideoScreen/{$videoRes}")
+                            videoResId = DataSource.WhatsappItems.values()
+                                .find { item -> item.title == it }?.resourceId!!
+                            viewModel.setVideoId(videoResId)
+                            navController.navigate("VideoScreen/{$videoResId}")
                         },
                         navigateUp = {
                             navController.navigateUp()
@@ -78,9 +75,11 @@ fun ElderlyTutorialApp(
                 }
                 composable(route = ElderlyScreen.Calendar.name) {
                     CalendarScreen(
-                        options = DataSource.CalendarItems.values().map { it.title },
                         onCalendarItemClicked = {
-                            navController.navigate("VideoScreen")
+                            videoResId = DataSource.CalendarItems.values()
+                                .find { item -> item.title == it }?.resourceId!!
+                            viewModel.setVideoId(videoResId)
+                            navController.navigate("VideoScreen/{$videoResId}")
                         },
                         navigateUp = {
                             navController.navigateUp()
@@ -90,9 +89,11 @@ fun ElderlyTutorialApp(
                 }
                 composable(route = ElderlyScreen.Alarm.name) {
                     AlarmScreen(
-                        options = DataSource.AlarmItems.values().map { it.title },
                         onAlarmItemClicked = {
-                            navController.navigate("VideoScreen")
+                            videoResId = DataSource.AlarmItems.values()
+                                .find { item -> item.title == it }?.resourceId!!
+                            viewModel.setVideoId(videoResId)
+                            navController.navigate("VideoScreen/{$videoResId}")
                         },
                         navigateUp = {
                             navController.navigateUp()
@@ -102,9 +103,11 @@ fun ElderlyTutorialApp(
                 }
                 composable(route = ElderlyScreen.Contact.name) {
                     ContactScreen(
-                        options = DataSource.ContactItems.values().map { it.title },
                         onContactItemClicked = {
-                            navController.navigate("VideoScreen")
+                            videoResId = DataSource.ContactItems.values()
+                                .find { item -> item.title == it }?.resourceId!!
+                            viewModel.setVideoId(videoResId)
+                            navController.navigate("VideoScreen/{$videoResId}")
                         },
                         navigateUp = {
                             navController.navigateUp()
@@ -114,9 +117,11 @@ fun ElderlyTutorialApp(
                 }
                 composable(route = ElderlyScreen.Wifi.name) {
                     WifiScreen(
-                        options = DataSource.WifiItems.values().map { it.title },
                         onWifiItemClicked = {
-                            navController.navigate("VideoScreen")
+                            videoResId = DataSource.WifiItems.values()
+                                .find { item -> item.title == it }?.resourceId!!
+                            viewModel.setVideoId(videoResId)
+                            navController.navigate("VideoScreen/{$videoResId}")
                         },
                         navigateUp = {
                             navController.navigateUp()
@@ -125,11 +130,12 @@ fun ElderlyTutorialApp(
                     )
                 }
                 composable(route = ElderlyScreen.Apps.name) {
-                    val videoRes = R.raw.whatsapp_new_group
                     AppsScreen(
-                        options = DataSource.AppsItems.values().map { it.title },
                         onAppsItemClicked = {
-                            navController.navigate("VideoScreen")
+                            videoResId = DataSource.AppsItems.values()
+                                .find { item -> item.title == it }?.resourceId!!
+                            viewModel.setVideoId(videoResId)
+                            navController.navigate("VideoScreen/{$videoResId}")
                         },
                         navigateUp = {
                             navController.navigateUp()
@@ -138,15 +144,10 @@ fun ElderlyTutorialApp(
                     )
                 }
                 composable(
-                    route = ElderlyScreen.Video.name
-//                            + "/{videoRes}",
-//                    arguments = listOf(navArgument("videoRes") { type = NavType.IntType })
+                    route = "VideoScreen/{$videoResId}",
                 ) {
-//                    val videoRes = DataSource.WhatsappItems.Dial.resourceId
-                    VideoScreen(
-                        videoItem = uiState.whatsappVideoId,
-                    )
-
+                    val whatsappVideoId = uiState.videoId
+                    VideoScreen(whatsappVideoId)
                 }
 
                 composable(route = ElderlyScreen.Forum.name) {

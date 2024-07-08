@@ -55,7 +55,7 @@ import com.hkbu.elderlytutorial.ui.DataSource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AlarmScreen(
-    options: List<Int>,
+//    options: List<Int>,
     onAlarmItemClicked: (Int) -> Unit = {},
     navigateUp: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -91,7 +91,7 @@ fun AlarmScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
-        options.forEach { item ->
+        DataSource.AlarmItems.values().forEach { item ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -102,11 +102,11 @@ fun AlarmScreen(
                     ),
             ) {
                 TextButton(
-                    onClick = { onAlarmItemClicked(item) },
+                    onClick = { onAlarmItemClicked(item.title) },
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text(
-                        text = LocalContext.current.resources.getString(item),
+                        text = LocalContext.current.resources.getString(item.title),
                         modifier = Modifier
                             .fillMaxWidth(),
                         textAlign = TextAlign.Center,
@@ -127,7 +127,7 @@ fun AlarmScreen(
 @Composable
 fun AlarmPreview() {
     AlarmScreen(
-        options = DataSource.AlarmItems.values().map { it.title },
+//        options = DataSource.AlarmItems.values().map { it.title },
         // TODO change DataSource
         modifier = Modifier.fillMaxHeight()
     )

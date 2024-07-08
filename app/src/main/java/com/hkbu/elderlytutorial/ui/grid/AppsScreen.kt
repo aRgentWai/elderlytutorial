@@ -55,7 +55,7 @@ import com.hkbu.elderlytutorial.ui.DataSource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppsScreen(
-    options: List<Int>,
+//    options: List<Int>,
     onAppsItemClicked: (Int) -> Unit = {},
     navigateUp: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -91,7 +91,7 @@ fun AppsScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
-        options.forEach { item ->
+        DataSource.AppsItems.values().forEach { item ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -102,11 +102,11 @@ fun AppsScreen(
                     ),
             ) {
                 TextButton(
-                    onClick = { onAppsItemClicked(item) },
+                    onClick = { onAppsItemClicked(item.title) },
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text(
-                        text = LocalContext.current.resources.getString(item),
+                        text = LocalContext.current.resources.getString(item.title),
                         modifier = Modifier
                             .fillMaxWidth(),
                         textAlign = TextAlign.Center,
@@ -127,7 +127,7 @@ fun AppsScreen(
 @Composable
 fun AppsPreview() {
     AppsScreen(
-        options = DataSource.AppsItems.values().map { it.title },
+//        options = DataSource.AppsItems.values().map { it.title },
         // TODO change DataSource
         modifier = Modifier.fillMaxHeight()
     )

@@ -41,7 +41,7 @@ import io.sanghun.compose.video.uri.VideoPlayerMediaItem
 
 @Composable
 fun VideoScreen(
-    @RawRes videoItem: Int
+    @RawRes videoResId: Int?
 ) {
     // TODO VideoPlayer
     val viewModel: ElderlyViewModel = viewModel()
@@ -50,7 +50,7 @@ fun VideoScreen(
 
     // Access the value of myStateFlow within the composition
 //    val video = myStateFlow.value
-    SetupVideoPlayer(videoItem)
+    SetupVideoPlayer(videoResId ?: R.raw.whatsapp_release_photo)
 
 }
 

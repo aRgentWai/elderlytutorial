@@ -55,7 +55,7 @@ import com.hkbu.elderlytutorial.ui.DataSource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContactScreen(
-    options: List<Int>,
+//    options: List<Int>,
     onContactItemClicked: (Int) -> Unit = {},
     navigateUp: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -91,7 +91,7 @@ fun ContactScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
-        options.forEach { item ->
+        DataSource.ContactItems.values().forEach { item ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -102,11 +102,11 @@ fun ContactScreen(
                     ),
             ) {
                 TextButton(
-                    onClick = { onContactItemClicked(item) },
+                    onClick = { onContactItemClicked(item.title) },
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text(
-                        text = LocalContext.current.resources.getString(item),
+                        text = LocalContext.current.resources.getString(item.title),
                         modifier = Modifier
                             .fillMaxWidth(),
                         textAlign = TextAlign.Center,
@@ -127,7 +127,7 @@ fun ContactScreen(
 @Composable
 fun ContactPreview() {
     ContactScreen(
-        options = DataSource.ContactItems.values().map { it.title },
+//        options = DataSource.ContactItems.values().map { it.title },
         // TODO change DataSource
         modifier = Modifier.fillMaxHeight()
     )
