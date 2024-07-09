@@ -47,10 +47,7 @@ fun VideoScreen(
 ) {
     // TODO VideoPlayer
     val viewModel: ElderlyViewModel = viewModel()
-    // Use the ViewModel using collectAsState to safely access the value
-//    val myStateFlow: State<Int> by viewModel.uiStateFlow.collectAsState()
 
-    // Access the value of myStateFlow within the composition
 //    val video = myStateFlow.value
     SetupVideoPlayer(videoResId ?: R.raw.whatsapp_release_photo)
 

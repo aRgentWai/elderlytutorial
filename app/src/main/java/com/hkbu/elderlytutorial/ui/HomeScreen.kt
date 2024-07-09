@@ -115,22 +115,22 @@ fun TabButton(navController: NavController) {
             ) {
                 Text(text = stringResource(R.string.comments))
             }
-            Button(
-                onClick = {
-                    //TODO navigate to ForumScreen/ AIMessagingScreen
-                },
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth()
-                    .weight(1f),
-                shape = RoundedCornerShape(4.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = colorResource(id = R.color.blue),
-                    contentColor = Color.White,
-                ), contentPadding = PaddingValues(0.dp)
-            ) {
-                Text(text = stringResource(R.string.aiMessaging))
-            }
+//            Button(
+//                onClick = {
+//                    //TODO navigate to ForumScreen/ AIMessagingScreen
+//                },
+//                modifier = Modifier
+//                    .padding(8.dp)
+//                    .fillMaxWidth()
+//                    .weight(1f),
+//                shape = RoundedCornerShape(4.dp),
+//                colors = ButtonDefaults.buttonColors(
+//                    containerColor = colorResource(id = R.color.blue),
+//                    contentColor = Color.White,
+//                ), contentPadding = PaddingValues(0.dp)
+//            ) {
+//                Text(text = stringResource(R.string.aiMessaging))
+//            }
         }
 
     }
@@ -161,34 +161,34 @@ fun Title() {
                 )
             }
         }
-        Box(
-            modifier = Modifier
-                .size(90.dp)
-                .padding(end = 8.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            ImageButton(
-                onClick = {
-                    //TODO
-                },
-                modifier = Modifier
-                    .size(60.dp)
-                    .clip(shape = RectangleShape)
-                    .border(
-                        // to be transparent
-                        BorderStroke(2.dp, Color(0xFF999999)),
-                        RoundedCornerShape(10.dp)
-                    ),
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.baseline_qr_code_scanner_24),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(5.dp)
-                )
-            }
-        }
+//        Box(
+//            modifier = Modifier
+//                .size(90.dp)
+//                .padding(end = 8.dp),
+//            contentAlignment = Alignment.Center,
+//        ) {
+//            ImageButton(
+//                onClick = {
+//                    //TODO
+//                },
+//                modifier = Modifier
+//                    .size(60.dp)
+//                    .clip(shape = RectangleShape)
+//                    .border(
+//                        // to be transparent
+//                        BorderStroke(2.dp, Color(0xFF999999)),
+//                        RoundedCornerShape(10.dp)
+//                    ),
+//            ) {
+//                Image(
+//                    painter = painterResource(id = R.drawable.baseline_qr_code_scanner_24),
+//                    contentDescription = null,
+//                    modifier = Modifier
+//                        .fillMaxSize()
+//                        .padding(5.dp)
+//                )
+//            }
+//        }
     }
 }
 
